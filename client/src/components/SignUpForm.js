@@ -12,13 +12,6 @@ function SignUpForm ({onLogin}) {
     function handleSubmit(e) {
         e.preventDefault();
         setErrors([]);
-
-        console.log(username)
-        console.log(password)
-        console.log(passwordConfirmation)
-        console.log(imageUrl)
-        console.log(phoneNumber)
-        
         
         fetch("/signup", {
           method: "POST",
@@ -27,11 +20,10 @@ function SignUpForm ({onLogin}) {
           },
           body: JSON.stringify({
             username: username,
-            image_url: imageUrl,
-            phone_number: phoneNumber,
             password: password,
             password_confirmation: passwordConfirmation,
-            
+            image_url: imageUrl,
+            phone_number: phoneNumber
           }),
         }).then((r) => {
           if (r.ok) {

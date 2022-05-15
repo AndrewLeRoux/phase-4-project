@@ -2,6 +2,7 @@ import '../App.css';
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login";
+import NavBar from "./NavBar"
 
 
 function App() {
@@ -21,7 +22,21 @@ function App() {
 
   return (
     <div>
-      "you are logged in!"
+      <NavBar user={user} setUser={setUser} />
+      <Switch>
+        <Route exact path="/profile">
+        
+        </Route>
+        <Route exact path="/favorites">
+        
+        </Route>
+        <Route exact path="/activities">
+          
+        </Route>
+        <Route exact path="/">
+        
+        </Route>
+      </Switch>
     </div>
   );
 }
