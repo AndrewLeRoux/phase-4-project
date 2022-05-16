@@ -7,7 +7,7 @@ const linkStyles = {
     margin: "0px 6px 6px",
     background: "green",
     textDecoration: "none",
-    color: "white",
+    color: "black",
 };
 
 function NavBar({ user, setUser}) {
@@ -28,7 +28,7 @@ function NavBar({ user, setUser}) {
           exact
           style={linkStyles}
           activeStyle={{
-            background: "#61dafb"
+            background: "#61fb78"
           }}
         >
           Posts
@@ -38,7 +38,7 @@ function NavBar({ user, setUser}) {
           exact
           style={linkStyles}
           activeStyle={{
-            background: "#61dafb"
+            background: "#61fb78"
           }}
         >
           Profile
@@ -48,7 +48,7 @@ function NavBar({ user, setUser}) {
           exact
           style={linkStyles}
           activeStyle={{
-            background: "#61dafb"
+            background: "#61fb78"
           }}
         >
           Favorites
@@ -58,13 +58,13 @@ function NavBar({ user, setUser}) {
           exact
           style={linkStyles}
           activeStyle={{
-            background: "#61dafb"
+            background: "#61fb78"
           }}
         >
           New Post
         </NavLink>
         <NavLink
-          to="/login"
+          to="/"
           exact
           style={linkStyles}
           onClick = {handleLogoutClick}

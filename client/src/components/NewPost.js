@@ -4,9 +4,7 @@ function NewPost() {
     
 
       return (
-        <>
-       hello from new post
-      </>
+        "hello from new post"
           )
 }
 

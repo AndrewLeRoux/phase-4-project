@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.profileCard{
+  margin: 16px;
+  border-style: solid outset;
+  border-color: green;
+  background-color: #61fb78;
+  color: rgb(0, 0, 0);
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+#myProfile{
+  text-align: center;
+  
+}
+
+.profile{
+  margin: 0 auto;
+}
+
+
+.card {
+  color: black;
+  font-size: 16px;
+  margin: 16px;
+  margin-left: 0; 
+  margin-right: auto;
+  text-align: left;
+}
+
+.postName{
+  text-decoration: underline;
+}

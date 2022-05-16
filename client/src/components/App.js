@@ -12,6 +12,7 @@ import Posts from './Posts';
 function App() {
 
   const [user, setUser] = useState(null);
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -22,6 +23,16 @@ function App() {
     });
   }, []);
 
+  useEffect(() =>{
+    fetch("/posts")
+    .then((r) => r.json())
+    .then((posts) => setPosts(posts));
+
+  }, [])
+
+
+
+
   if (!user) return <Login onLogin={setUser} />;
 
   return (
@@ -29,16 +40,16 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <Switch>
         <Route exact path="/profile">
-        <Profile/>
+        <Profile user = {user}/>
         </Route>
         <Route exact path="/favorites">
-        <Favorites/>
+        <Favorites user = {user}/>
         </Route>
         <Route exact path="/create_post">
           <NewPost/>
         </Route>
         <Route exact path="/">
-          <Posts/>
+          <Posts posts = {posts} user={user}/>
         </Route>
       </Switch>
     </div>

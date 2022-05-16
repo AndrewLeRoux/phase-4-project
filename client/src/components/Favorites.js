@@ -1,12 +1,14 @@
 import React from "react"
+import Post from "./Post";
 
-function Favorites() {
+function Favorites({user}) {
     
 
       return (
-        <>
-       hello from favorites
-      </>
+        <div>
+          {user.favorited_posts.map((post) =>{ return <Post key = {post.id} post={post}/>})}
+        </div>
+       
           )
 }
 

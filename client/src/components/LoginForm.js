@@ -37,7 +37,7 @@ function LoginForm ({onLogin}) {
         <input
             type="text"
             name = "password"
-            placeholder= "pasword..."
+            placeholder= "password..."
             onChange={(e) => setPassword(e.target.value)}
             value={password}
         />

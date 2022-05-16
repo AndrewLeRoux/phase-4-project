@@ -1,12 +1,17 @@
 import React from "react"
 
-function Profile() {
+function Profile({user}) {
     
 
       return (
-        <>
-       hello from profile
-      </>
+        <div className = "profile">
+            <div className = "profileCard">
+                <h1 id = "myProfile">My Profile</h1>
+                <img src={user.image_url}></img>
+                <p>Username: {user.username}</p>
+                <p>Phone Number: {user.phone_number }</p>
+                </div>
+        </div>
           )
 }
 
