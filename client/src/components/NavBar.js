@@ -31,7 +31,7 @@ function NavBar({ user, setUser}) {
             background: "#61dafb"
           }}
         >
-          Home
+          Posts
         </NavLink>
         <NavLink
           to="/profile"
@@ -44,16 +44,6 @@ function NavBar({ user, setUser}) {
           Profile
         </NavLink>
         <NavLink
-          to="/activities"
-          exact
-          style={linkStyles}
-          activeStyle={{
-            background: "#61dafb"
-          }}
-        >
-          Activities
-        </NavLink>
-        <NavLink
           to="/favorites"
           exact
           style={linkStyles}
@@ -62,6 +52,16 @@ function NavBar({ user, setUser}) {
           }}
         >
           Favorites
+        </NavLink>
+        <NavLink
+          to="/create_post"
+          exact
+          style={linkStyles}
+          activeStyle={{
+            background: "#61dafb"
+          }}
+        >
+          New Post
         </NavLink>
         <NavLink
           to="/login"

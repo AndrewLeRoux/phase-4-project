@@ -49,7 +49,7 @@ function SignUpForm ({onLogin}) {
         <input
             type="text"
             name = "password"
-            placeholder= "pasword..."
+            placeholder= "password..."
             onChange={(e) => setPassword(e.target.value)}
             value={password}
         />
@@ -57,7 +57,7 @@ function SignUpForm ({onLogin}) {
         <input
             type="text"
             name = "password confirmation"
-            placeholder= "pasword confirmation..."
+            placeholder= "password confirmation..."
             onChange={(e) => setPasswordConfirmation(e.target.value)}
             value={passwordConfirmation}
         />

@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create( username: 'aleroux', password: 'password', image_url: "temp", phone_number: "941-786-8416")
+User.create( username: 'aleroux', password: 'password', password_confirmation: "password", image_url: "temp", phone_number: "941-786-8416")
