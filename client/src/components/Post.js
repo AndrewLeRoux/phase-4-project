@@ -1,23 +1,28 @@
 import React from "react";
 
 
-function Post({post, user, onAddFavorite}) {
+function Post({post, user, favorites, onAddFavorite}) {
 
     function addToFavorites () {
+        if (favorites.find(favorite => favorite.post_id == post.id && favorite.user_id == user.id)) {
+            alert("already in favorites")
+         }
+         else {
             fetch("/favorites", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                post_id: post.id,
-                user_id: user.id
-                
-            }),
-        })
-        .then((r) => r.json())
-        .then((newFavorite) => onAddFavorite(newFavorite));
-        
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    post_id: post.id,
+                    user_id: user.id
+                    
+                }),
+            })
+            .then((r) => r.json())
+            .then((newFavorite) => onAddFavorite(newFavorite));    
+         }
+            
     }
 
     

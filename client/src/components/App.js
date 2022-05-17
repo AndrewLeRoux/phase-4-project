@@ -57,6 +57,7 @@ function App() {
 
   return (
     <div>
+      <h1>AndysList</h1>
       <NavBar user={user} setUser={setUser} />
       <Switch>
         <Route exact path="/profile">
@@ -66,10 +67,10 @@ function App() {
         <Favorites user = {user} favorites = {favorites} tags = {tags} onFavoriteDelete={handleFavoriteDelete}/>
         </Route>
         <Route exact path="/create_post">
-          <NewPost/>
+          <NewPost user={user} tags={tags}/>
         </Route>
         <Route exact path="/">
-          <Posts posts = {posts} user={user} tags = {tags} onAddFavorite={handleAddFavorite}/>
+          <Posts posts = {posts} user={user} tags = {tags} favorites = {favorites} onAddFavorite={handleAddFavorite}/>
         </Route>
       </Switch>
     </div>

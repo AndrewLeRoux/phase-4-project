@@ -5,7 +5,7 @@ function Favorite({favorite, tags, onFavoriteDelete}) {
 
 
     const post = favorite.post
-    // const tag = tags.find(tag => (post.))
+    const tag = tags.find(tag => (post.tag_id == tag.id))
 
     function removeFromFavorites() {
         fetch(`/favorites/${favorite.id}`, {
@@ -22,7 +22,7 @@ function Favorite({favorite, tags, onFavoriteDelete}) {
             <img src = {post.image_url} alt="post image" width = "200px" height = "200px"></img>
                 <p className = "postName">{favorite.name}</p>
                 <p>{post.description}</p>
-                {/* <p>Tag: {post.tag.name}</p> */}
+                <p>Tag: {tag.name}</p>
                 <button onClick = {removeFromFavorites}>remove from favorite</button>
         </div>
         
