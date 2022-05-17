@@ -5,12 +5,12 @@ class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.all
 
-    render json: @favorites
+    render json: @favorites, include: [ 'post', 'post.tag']
   end
 
   # GET /favorites/1
   def show
-    render json: @favorite
+    render json: @favorite, include: [ 'post', 'post.tag']
   end
 
   # POST /favorites
@@ -35,7 +35,10 @@ class FavoritesController < ApplicationController
 
   # DELETE /favorites/1
   def destroy
+    temp_favorite = @favorite
     @favorite.destroy
+    render json: temp_favorite
+
   end
 
   private

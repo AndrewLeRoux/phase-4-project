@@ -2,21 +2,11 @@ import React, {useState, useEffect} from "react";
 import Post from "./Post";
 import Tag from "./Tag";
 
-function Posts({posts, user}) {
+function Posts({posts, user, tags, onAddFavorite}) {
 
-  const [tags, setTags] = useState([])
   const [currentTag, setCurrentTag] = useState(null)
   const [filteredPosts, setFilteredPosts] = useState([])
   
-
-    
-  useEffect(() =>{
-   
-    fetch("/tags")
-    .then((r) => r.json())
-    .then((tags) => setTags(tags));
-
-  }, [])
 
 
   function handleTagClick(tag){
@@ -33,7 +23,7 @@ function Posts({posts, user}) {
     {currentTag? 
     <>
     <button onClick = {() => {setCurrentTag(null)}}>Main Menu</button>
-    {filteredPosts.map((post) =>{ return <Post key = {post.id} post={post} user= {user}/>})}
+    {filteredPosts.map((post) =>{ return <Post key = {post.id} post={post} user= {user} onAddFavorite={onAddFavorite}/>})}
     </>
     : 
     <>

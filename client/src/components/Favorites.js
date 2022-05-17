@@ -1,12 +1,13 @@
 import React from "react"
-import Post from "./Post";
+import Favorite from "./Favorite"
 
-function Favorites({user}) {
-    
+function Favorites({user, favorites, tags, onFavoriteDelete}) {
 
+  const favoritesList = favorites.filter(favorite => (user.id == favorite.user_id))
+  
       return (
         <div>
-          {user.favorited_posts.map((post) =>{ return <Post key = {post.id} post={post}/>})}
+          {favoritesList.map((favorite) =>{ return <Favorite key = {favorite.id} favorite={favorite} tags={tags} onFavoriteDelete={onFavoriteDelete}/>})}
         </div>
        
           )

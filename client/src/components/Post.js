@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Post({post, user}) {
+function Post({post, user, onAddFavorite}) {
 
     function addToFavorites () {
             fetch("/favorites", {
@@ -15,11 +15,12 @@ function Post({post, user}) {
                 
             }),
         })
-        // .then((r) => r.json())
-        // .then((newFavorite) => onAddFavorite(newFavorite));
+        .then((r) => r.json())
+        .then((newFavorite) => onAddFavorite(newFavorite));
         
     }
 
+    
 
     return (
         <div className="card">

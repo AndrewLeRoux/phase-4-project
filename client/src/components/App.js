@@ -11,8 +11,10 @@ import Posts from './Posts';
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([])
+  const [tags, setTags] = useState([])
+  const [favorites, setFavorites] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -28,9 +30,27 @@ function App() {
     .then((r) => r.json())
     .then((posts) => setPosts(posts));
 
+
+    fetch("/tags")
+    .then((r) => r.json())
+    .then((tags) => setTags(tags));
+
+    fetch("/favorites")
+    .then((r) => r.json())
+    .then((favorites) => setFavorites(favorites));
+
   }, [])
 
 
+  function handleAddFavorite(newFavorite) {
+    const updatedFavorites = [...favorites, newFavorite]
+    setFavorites(updatedFavorites)
+  }
+
+  function handleFavoriteDelete(deletedFavorite) {
+    const newFavorites = favorites.filter(favorite => !(favorite.id == deletedFavorite.id))
+    setFavorites(newFavorites)
+  }
 
 
   if (!user) return <Login onLogin={setUser} />;
@@ -43,13 +63,13 @@ function App() {
         <Profile user = {user}/>
         </Route>
         <Route exact path="/favorites">
-        <Favorites user = {user}/>
+        <Favorites user = {user} favorites = {favorites} tags = {tags} onFavoriteDelete={handleFavoriteDelete}/>
         </Route>
         <Route exact path="/create_post">
           <NewPost/>
         </Route>
         <Route exact path="/">
-          <Posts posts = {posts} user={user}/>
+          <Posts posts = {posts} user={user} tags = {tags} onAddFavorite={handleAddFavorite}/>
         </Route>
       </Switch>
     </div>
