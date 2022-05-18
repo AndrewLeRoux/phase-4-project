@@ -6,4 +6,5 @@ class Post < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  validates :tag_id, presence: true
 end

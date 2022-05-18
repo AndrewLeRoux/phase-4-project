@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function NewPost({user, tags, onAddPost}) {
+function UpdatePost({post, tags, user}) {
 
-  const [name, setName] = useState("")
-  const [image_url, setImageUrl] = useState("")
-  const [description, setDescription] = useState("")
-  const [tag_id, setTagId] = useState(null)
+  const [name, setName] = useState(post.name)
+  const [image_url, setImageUrl] = useState(post.image_url)
+  const [description, setDescription] = useState(post.description)
+  const [tag_id, setTagId] = useState(post.tag_id)
   
 
   let tagList = tags.map((tag) =>{
@@ -15,7 +15,7 @@ function NewPost({user, tags, onAddPost}) {
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/posts",{
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         },
@@ -70,4 +70,4 @@ function NewPost({user, tags, onAddPost}) {
 }
 
 
-export default NewPost;
+export default UpdatePost;

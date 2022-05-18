@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    render json: @posts, include: ['tag']
+    render json: @posts, include: ['tag', 'user']
   end
 
   # GET /posts/1
   def show
-    render json: @post, include: ['tag']
+    render json: @post, include: ['tag', 'user']
   end
 
   # POST /posts
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      render json: @post, status: :created, location: @post
+      render json: @post, status: :created, location: @post, include: ['tag', 'user']
     else
       render json: @post.errors, status: :unprocessable_entity
     end
@@ -35,7 +35,9 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
+    temp_post = @post
     @post.destroy
+    render json: temp_post, include: ['tag', 'user']
   end
 
   private

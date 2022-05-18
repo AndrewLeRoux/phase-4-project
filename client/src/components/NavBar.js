@@ -34,6 +34,16 @@ function NavBar({ user, setUser}) {
           Posts
         </NavLink>
         <NavLink
+          to="/my_posts"
+          exact
+          style={linkStyles}
+          activeStyle={{
+            background: "#61fb78"
+          }}
+        >
+          My Posts
+        </NavLink>
+        <NavLink
           to="/profile"
           exact
           style={linkStyles}

@@ -7,6 +7,8 @@ import Favorites from './Favorites';
 import Profile from './Profile';
 import NewPost from './NewPost';
 import Posts from './Posts';
+import MyPosts from './MyPosts';
+import UpdatePost from './UpdatePost';
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
   const [posts, setPosts] = useState([])
   const [tags, setTags] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [updatingPost, setUpdatingPost] = useState(null)
 
   useEffect(() => {
     // auto-login
@@ -52,6 +55,16 @@ function App() {
     setFavorites(newFavorites)
   }
 
+  function handlePostDelete(deletedPost) {
+    const newPosts = posts.filter(post => !(post.id == deletedPost.id))
+    setPosts(newPosts)
+  }
+
+  function handlePostUpdate(post) {
+    const newPost = post
+    setUpdatingPost(newPost)
+  }
+
 
   if (!user) return <Login onLogin={setUser} />;
 
@@ -70,7 +83,13 @@ function App() {
           <NewPost user={user} tags={tags}/>
         </Route>
         <Route exact path="/">
-          <Posts posts = {posts} user={user} tags = {tags} favorites = {favorites} onAddFavorite={handleAddFavorite}/>
+          <Posts posts = {posts} user={user} tags = {tags} favorites = {favorites} onAddFavorite={handleAddFavorite} onPostDelete={handlePostDelete} onPostUpdate={handlePostUpdate}/>
+        </Route>
+        <Route exact path="/my_posts">
+          <MyPosts posts = {posts} user={user} favorites = {favorites} onAddFavorite={handleAddFavorite} onPostDelete={handlePostDelete} onPostUpdate={handlePostUpdate}/>
+        </Route>
+        <Route exact path="/update_post">
+          <UpdatePost post = {updatingPost}/>
         </Route>
       </Switch>
     </div>

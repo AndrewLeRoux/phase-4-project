@@ -5,12 +5,12 @@ class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.all
 
-    render json: @favorites, include: [ 'post', 'post.tag']
+    render json: @favorites, include: [ 'post', 'post.tag', 'post.user']
   end
 
   # GET /favorites/1
   def show
-    render json: @favorite, include: [ 'post', 'post.tag']
+    render json: @favorite, include: [ 'post', 'post.tag', 'post.user']
   end
 
   # POST /favorites
@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(favorite_params)
 
     if @favorite.save
-      render json: @favorite, status: :created, location: @favorite
+      render json: @favorite, status: :created, location: @favorite, include: [ 'post', 'post.tag', 'post.user']
     else
       render json: @favorite.errors, status: :unprocessable_entity
     end
