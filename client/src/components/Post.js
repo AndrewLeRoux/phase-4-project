@@ -47,7 +47,6 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
     function updatePost() {
         onPostUpdate(post)
         history.push("/update_post");
-        
     }
 
 
@@ -67,7 +66,6 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
             <button onClick = {deletePost}>delete post</button>
             <button onClick = {updatePost}>update post</button>
             </>
-            
             : 
             ''}
         </div>

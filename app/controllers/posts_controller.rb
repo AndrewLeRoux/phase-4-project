@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
-      render json: @post
+      render json: @post, include: ['tag', 'user']
     else
       render json: @post.errors, status: :unprocessable_entity
     end

@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function UpdatePost({post, tags, user}) {
+function UpdatePost({post, tags, user, onUpdatePost}) {
+
+  let history = useHistory();
+  
 
   const [name, setName] = useState(post.name)
   const [image_url, setImageUrl] = useState(post.image_url)
@@ -10,11 +14,11 @@ function UpdatePost({post, tags, user}) {
 
   let tagList = tags.map((tag) =>{
     return <option key = {tag.id} value = {tag_id}>{tag.name}</option>
-})
+  })
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/posts",{
+    fetch(`/posts/${post.id}`,{
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -27,13 +31,24 @@ function UpdatePost({post, tags, user}) {
           tag_id: tag_id
         }),
         })
-        // .then((r) => r.json())
-        // .then((newPost) => {
-        //   onAddPost(newPost)
-        // });
+        .then((r) => r.json())
+        .then((newPost) => {
+          onUpdatePost(newPost)
+          history.push("/my_posts");
+        });
   }
 
   return (
+    <>
+    <div className="card">
+            <h2></h2>
+            <img src = {post.image_url} alt="post image" width = "200px" height = "200px"></img>
+            <p className = "postName">{post.name}</p>
+            <p>{post.description}</p>
+            <p>Tag: {post.tag.name}</p>
+            <p>Creator: {post.user.username}</p>
+            <p>Contact information: {post.user.phone_number}</p>
+        </div>
     <form className = "form" onSubmit={handleSubmit}>
         <input
             type="text"
@@ -64,8 +79,9 @@ function UpdatePost({post, tags, user}) {
             {tagList}
         </select>
         <br/>
-        <button className="createNewPostButton" type="submit">Create Post</button>
+        <button className="createNewPostButton" type="submit">Update Post</button>
         </form>
+        </>
   )
 }
 

@@ -65,6 +65,18 @@ function App() {
     setUpdatingPost(newPost)
   }
 
+  function handleUpdatePost(newPost) {
+      const updatedPosts = posts.map((post) => {
+        if (post.id === newPost.id){
+          return newPost
+        }
+        else {
+            return post
+          }
+        })
+      setPosts(updatedPosts)
+  }
+
 
   if (!user) return <Login onLogin={setUser} />;
 
@@ -89,7 +101,7 @@ function App() {
           <MyPosts posts = {posts} user={user} favorites = {favorites} onAddFavorite={handleAddFavorite} onPostDelete={handlePostDelete} onPostUpdate={handlePostUpdate}/>
         </Route>
         <Route exact path="/update_post">
-          <UpdatePost post = {updatingPost}/>
+          <UpdatePost post = {updatingPost} tags={tags} user={user} onUpdatePost={handleUpdatePost}/>
         </Route>
       </Switch>
     </div>
