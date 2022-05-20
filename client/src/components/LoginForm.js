@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Error from "./Error";
+
 
 function LoginForm ({onLogin}) {
     const [username, setUsername] = useState("");
@@ -25,6 +27,7 @@ function LoginForm ({onLogin}) {
 
 
     return (
+      <>
         <form onSubmit={handleSubmit}>
             <input
             type="text"
@@ -44,6 +47,8 @@ function LoginForm ({onLogin}) {
         <br/>
         <button type="submit">Login</button>
         </form>
+        {errors.map(error => {return <Error key = {error}>{error}</Error>})}
+        </>
     )
 }
 

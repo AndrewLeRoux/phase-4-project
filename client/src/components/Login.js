@@ -9,7 +9,7 @@ function Login({ onLogin }) {
     
     return (
         <div>
-            <h1>Andy's List</h1>
+            <h1>AndysList</h1>
             {showLogin ? ( 
                 <>
                 <LoginForm onLogin = {onLogin} />

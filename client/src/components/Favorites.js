@@ -3,7 +3,7 @@ import Favorite from "./Favorite"
 
 function Favorites({user, favorites, tags, onFavoriteDelete}) {
 
-  const favoritesList = favorites.filter(favorite => (user.id == favorite.user_id))
+  const favoritesList = favorites.filter(favorite => (user.id === favorite.user_id))
   
       return (
         <div>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Error from "./Error";
 
 function UpdatePost({post, tags, user, onUpdatePost}) {
 
   let history = useHistory();
-  
+  const [errors, setErrors] = useState([]);
+
 
   const [name, setName] = useState(post.name)
   const [image_url, setImageUrl] = useState(post.image_url)
@@ -31,18 +33,24 @@ function UpdatePost({post, tags, user, onUpdatePost}) {
           tag_id: tag_id
         }),
         })
-        .then((r) => r.json())
-        .then((newPost) => {
-          onUpdatePost(newPost)
-          history.push("/my_posts");
-        });
+        .then((r) => {
+          if(r.ok) {
+            r.json().then(
+              (newPost) => {
+                onUpdatePost(newPost)
+                history.push("/my_posts")
+              })
+          }
+          else {
+            r.json().then((err) => setErrors(err.errors))
+          }
+        })
   }
 
   return (
     <>
     <div className="card">
-            <h2></h2>
-            <img src = {post.image_url} alt="post image" width = "200px" height = "200px"></img>
+            <img src = {post.image_url} alt="post" width = "200px" height = "200px"></img>
             <p className = "postName">{post.name}</p>
             <p>{post.description}</p>
             <p>Tag: {post.tag.name}</p>
@@ -81,6 +89,7 @@ function UpdatePost({post, tags, user, onUpdatePost}) {
         <br/>
         <button className="createNewPostButton" type="submit">Update Post</button>
         </form>
+        {errors.map(error => {return <Error key = {error}>{error}</Error>})}
         </>
   )
 }

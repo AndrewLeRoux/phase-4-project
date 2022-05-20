@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import Post from "./Post";
-import Tag from "./Tag";
+
 
 function MyPosts({posts, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}) {
 

@@ -15,7 +15,7 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
 
 
     function addToFavorites () {
-        if (favorites.find(favorite => favorite.post_id == post.id && favorite.user_id == user.id)) {
+        if (favorites.find(favorite => favorite.post_id === post.id && favorite.user_id === user.id)) {
             alert("already in favorites")
          }
          else {
@@ -54,7 +54,7 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
 
     return (
         <div className="card">
-            <img src = {post.image_url} alt="post image" width = "200px" height = "200px"></img>
+            <img src = {post.image_url} alt="post" width = "200px" height = "200px"></img>
             <p className = "postName">{post.name}</p>
             <p>{post.description}</p>
             <p>Tag: {post.tag.name}</p>

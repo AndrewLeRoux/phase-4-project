@@ -7,7 +7,7 @@ function Profile({user}) {
         <div className = "profile">
             <div className = "profileCard">
                 <h1 id = "myProfile">My Profile</h1>
-                <img src={user.image_url}></img>
+                <img src={user.image_url} alt="profile"></img>
                 <p>Username: {user.username}</p>
                 <p>Phone Number: {user.phone_number }</p>
                 </div>

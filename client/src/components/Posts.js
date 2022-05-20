@@ -4,6 +4,9 @@ import Tag from "./Tag";
 
 function Posts({posts, user, tags, favorites, onAddFavorite, onPostDelete, onPostUpdate}) {
 
+
+  
+
   const [currentTag, setCurrentTag] = useState(null)
   const [filteredPosts, setFilteredPosts] = useState([])
 

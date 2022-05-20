@@ -8,6 +8,12 @@
 
 
 # tags for seeding
+
+User.create( username: "aleroux", password: "password", image_url: "https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png", phone_number: "941-786-8416")
+User.create( username: "andrew", password: "password", image_url: "https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png", phone_number: "555-555-5555")
+User.create( username: "john", password: "password", image_url: "https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png", phone_number: "111-111-1111")
+User.create( username: "chris", password: "password", image_url: "https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png", phone_number: "123-456-7890")
+
 Tag.create( name: "activities")
 Tag.create( name: "events")
 Tag.create( name: "pets")

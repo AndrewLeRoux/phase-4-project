@@ -1,11 +1,18 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Error from "./Error";
+
 
 function NewPost({user, tags, onAddPost}) {
+
+  let history = useHistory();
+
 
   const [name, setName] = useState("")
   const [image_url, setImageUrl] = useState("")
   const [description, setDescription] = useState("")
   const [tag_id, setTagId] = useState(null)
+  const [errors, setErrors] = useState([]);
   
 
   let tagList = tags.map((tag) =>{
@@ -27,13 +34,22 @@ function NewPost({user, tags, onAddPost}) {
           tag_id: tag_id
         }),
         })
-        // .then((r) => r.json())
-        // .then((newPost) => {
-        //   onAddPost(newPost)
-        // });
+        .then((r) => {
+          if(r.ok) {
+            r.json().then(
+              (newPost) => {
+                onAddPost(newPost)
+                history.push("/my_posts")
+              })
+          }
+          else {
+            r.json().then((err) => setErrors(err.errors))
+          }
+        })
   }
 
   return (
+    <>
     <form className = "form" onSubmit={handleSubmit}>
         <input
             type="text"
@@ -66,6 +82,8 @@ function NewPost({user, tags, onAddPost}) {
         <br/>
         <button className="createNewPostButton" type="submit">Create Post</button>
         </form>
+        {errors.map(error => {return <Error key = {error}>{error}</Error>})}
+        </>
   )
 }
 

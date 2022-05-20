@@ -15,22 +15,18 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
 
-    if @post.save
-      render json: @post, status: :created, location: @post, include: ['tag', 'user']
-    else
-      render json: @post.errors, status: :unprocessable_entity
-    end
+    @post = Post.create!(post_params)
+    render json: @post, status: :created, location: @post, include: ['tag', 'user']
+
   end
 
   # PATCH/PUT /posts/1
   def update
-    if @post.update(post_params)
-      render json: @post, include: ['tag', 'user']
-    else
-      render json: @post.errors, status: :unprocessable_entity
-    end
+
+    @post.update!(post_params)
+    render json: @post, include: ['tag', 'user']
+
   end
 
   # DELETE /posts/1

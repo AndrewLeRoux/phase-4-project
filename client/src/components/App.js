@@ -28,21 +28,34 @@ function App() {
     });
   }, []);
 
-  useEffect(() =>{
-    fetch("/posts")
-    .then((r) => r.json())
-    .then((posts) => setPosts(posts));
+  
+  useEffect(() => {
+    async function getPosts() {
+      const r = await fetch("/posts")
+      if (r.ok) {
+        r.json().then((posts) => setPosts(posts))
+      }
+    }
 
+    async function getTags() {
+      const r = await fetch("/tags")
+      if (r.ok) {
+        r.json().then((tags) => setTags(tags))
+      }
+    }
 
-    fetch("/tags")
-    .then((r) => r.json())
-    .then((tags) => setTags(tags));
+    async function getFavorites() {
+      const r = await fetch("/favorites")
+      if (r.ok) {
+        r.json().then((favorites) => setFavorites(favorites))
+      }
+    }
 
-    fetch("/favorites")
-    .then((r) => r.json())
-    .then((favorites) => setFavorites(favorites));
+    getPosts();
+    getFavorites();
+    getTags();
 
-  }, [])
+  }, [user])
 
 
   function handleAddFavorite(newFavorite) {
@@ -51,18 +64,23 @@ function App() {
   }
 
   function handleFavoriteDelete(deletedFavorite) {
-    const newFavorites = favorites.filter(favorite => !(favorite.id == deletedFavorite.id))
+    const newFavorites = favorites.filter(favorite => !(favorite.id === deletedFavorite.id))
     setFavorites(newFavorites)
   }
 
   function handlePostDelete(deletedPost) {
-    const newPosts = posts.filter(post => !(post.id == deletedPost.id))
+    const newPosts = posts.filter(post => !(post.id === deletedPost.id))
     setPosts(newPosts)
   }
 
   function handlePostUpdate(post) {
     const newPost = post
     setUpdatingPost(newPost)
+  }
+
+  function handleAddPost(newPost){
+    const newPosts = [...posts, newPost]
+    setPosts(newPosts)
   }
 
   function handleUpdatePost(newPost) {
@@ -92,7 +110,7 @@ function App() {
         <Favorites user = {user} favorites = {favorites} tags = {tags} onFavoriteDelete={handleFavoriteDelete}/>
         </Route>
         <Route exact path="/create_post">
-          <NewPost user={user} tags={tags}/>
+          <NewPost user={user} tags={tags} onAddPost={handleAddPost}/>
         </Route>
         <Route exact path="/">
           <Posts posts = {posts} user={user} tags = {tags} favorites = {favorites} onAddFavorite={handleAddFavorite} onPostDelete={handlePostDelete} onPostUpdate={handlePostUpdate}/>

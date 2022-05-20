@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Error from "./Error";
 
 function SignUpForm ({onLogin}) {
     const [username, setUsername] = useState("");
@@ -37,6 +38,7 @@ function SignUpForm ({onLogin}) {
 
 
     return (
+      <>
         <form onSubmit={handleSubmit}>
             <input
             type="text"
@@ -80,6 +82,8 @@ function SignUpForm ({onLogin}) {
         <br/>
         <button type="submit">Create Account</button>
         </form>
+        {errors.map(error => {return <Error key = {error}>{error}</Error>})}
+        </>
     )
 }
 

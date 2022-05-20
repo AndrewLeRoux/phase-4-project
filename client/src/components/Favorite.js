@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 
 function Favorite({favorite, tags, onFavoriteDelete}) {
@@ -18,7 +18,7 @@ function Favorite({favorite, tags, onFavoriteDelete}) {
     
     return (
         <div className="card">
-            <img src = {favorite.post.image_url} alt="post image" width = "200px" height = "200px"></img>
+            <img src = {favorite.post.image_url} alt="post" width = "200px" height = "200px"></img>
                 <p className = "postName">{favorite.post.name}</p>
                 <p>{favorite.post.description}</p>
                 <p>Tag: {favorite.post.tag.name}</p>

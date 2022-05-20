@@ -44,6 +44,16 @@ function NavBar({ user, setUser}) {
           My Posts
         </NavLink>
         <NavLink
+          to="/create_post"
+          exact
+          style={linkStyles}
+          activeStyle={{
+            background: "#61fb78"
+          }}
+        >
+          New Post
+        </NavLink>
+        <NavLink
           to="/profile"
           exact
           style={linkStyles}
@@ -62,16 +72,6 @@ function NavBar({ user, setUser}) {
           }}
         >
           Favorites
-        </NavLink>
-        <NavLink
-          to="/create_post"
-          exact
-          style={linkStyles}
-          activeStyle={{
-            background: "#61fb78"
-          }}
-        >
-          New Post
         </NavLink>
         <NavLink
           to="/"
