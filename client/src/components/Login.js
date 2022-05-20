@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm"
+import styled from "styled-components";
+
 
 function Login({ onLogin }) {
 
@@ -8,8 +10,8 @@ function Login({ onLogin }) {
 
     
     return (
-        <div>
-            <h1>AndysList</h1>
+        <Wrapper>
+            <Title>AndysList</Title>
             {showLogin ? ( 
                 <>
                 <LoginForm onLogin = {onLogin} />
@@ -23,8 +25,17 @@ function Login({ onLogin }) {
                 <button onClick = { () => setShowLogin(true)}> Login Page</button>
                 </>    
                  )}
-        </div>
+        </Wrapper>
         )
 }
+
+const Wrapper = styled.section`
+  text-align: center;
+  font-size: 20px;
+`;
+
+const Title = styled.h1`
+    font-size: 45px;
+`;
 
 export default Login;

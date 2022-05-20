@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 function Tag({tag, onTagClick}) {
 
@@ -8,9 +9,18 @@ function Tag({tag, onTagClick}) {
 
     return (
         <div>
-            <button onClick={handleTagClick}>{tag.name}</button>
+            <Button onClick={handleTagClick}>{tag.name}</Button>
         </div>
     )
 }
+
+const Button = styled.button`
+  cursor: pointer;
+  font-size: 16px;
+  background-color: green;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 2px;
+`;
 
 export default Tag;

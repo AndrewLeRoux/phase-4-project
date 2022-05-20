@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Error from "./Error";
 
-
 function LoginForm ({onLogin}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -51,5 +50,6 @@ function LoginForm ({onLogin}) {
         </>
     )
 }
+
 
 export default LoginForm;

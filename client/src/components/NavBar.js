@@ -1,5 +1,8 @@
 import React from "react"
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+
 const linkStyles = {
     display: "inline-block",
     width: "130px",
@@ -8,9 +11,11 @@ const linkStyles = {
     background: "green",
     textDecoration: "none",
     color: "black",
+    "border-radius": "20px",
+    "text-align": "center"
 };
 
-function NavBar({ user, setUser}) {
+function NavBar({setUser}) {
     function handleLogoutClick() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
           if (r.ok) {
@@ -20,7 +25,7 @@ function NavBar({ user, setUser}) {
       }
 
       return (
-        <>
+        <Wrapper>
         <div className = "navbar">
         <br></br>
         <NavLink
@@ -82,9 +87,16 @@ function NavBar({ user, setUser}) {
           Logout
         </NavLink>
         </div>
-      </>
+      </Wrapper>
           )
 }
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 
 
 export default NavBar;

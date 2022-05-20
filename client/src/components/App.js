@@ -9,7 +9,7 @@ import NewPost from './NewPost';
 import Posts from './Posts';
 import MyPosts from './MyPosts';
 import UpdatePost from './UpdatePost';
-
+import styled from 'styled-components';
 
 function App() {
 
@@ -100,8 +100,8 @@ function App() {
 
   return (
     <div>
-      <h1>AndysList</h1>
-      <NavBar user={user} setUser={setUser} />
+      <Title>AndysList</Title>
+      <NavBar setUser={setUser} />
       <Switch>
         <Route exact path="/profile">
         <Profile user = {user}/>
@@ -125,5 +125,11 @@ function App() {
     </div>
   );
 }
+
+const Title = styled.h1`
+    font-size: 30px;
+    text-align: center;
+`;
+
 
 export default App;
