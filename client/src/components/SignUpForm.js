@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Error from "./Error";
+import styled from "styled-components";
 
 function SignUpForm ({onLogin}) {
     const [username, setUsername] = useState("");
@@ -38,9 +39,10 @@ function SignUpForm ({onLogin}) {
 
 
     return (
-      <>
+      <Wrapper>
+        <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
-            <input
+            <Input
             type="text"
             name = "username"
             placeholder= "username..."
@@ -48,23 +50,23 @@ function SignUpForm ({onLogin}) {
             value={username}
         />
         <br/>
-        <input
-            type="text"
+        <Input
+            type="password"
             name = "password"
             placeholder= "password..."
             onChange={(e) => setPassword(e.target.value)}
             value={password}
         />
         <br/>
-        <input
-            type="text"
+        <Input
+            type="password"
             name = "password confirmation"
             placeholder= "password confirmation..."
             onChange={(e) => setPasswordConfirmation(e.target.value)}
             value={passwordConfirmation}
         />
         <br/>
-        <input
+        <Input
             type="text"
             name = "imageUrl"
             placeholder= "Image url..."
@@ -72,7 +74,7 @@ function SignUpForm ({onLogin}) {
             value={imageUrl}
         />
         <br/>
-        <input
+        <Input
             type="text"
             name = "phoneNumber"
             placeholder= "phone number..."
@@ -80,11 +82,56 @@ function SignUpForm ({onLogin}) {
             value={phoneNumber}
         />
         <br/>
-        <button type="submit">Create Account</button>
+        <Button type="submit">Create Account</Button>
         </form>
         {errors.map(error => {return <Error key = {error}>{error}</Error>})}
-        </>
+        </Wrapper>
     )
 }
+
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: #61fb78;
+  margin-left: 30px;
+  margin-right: 30px;
+  color: black;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-style: solid outset;
+  border-color: green;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 40px;
+`;
+
+
+const Label = styled.label`
+	margin-bottom: 0.5em;
+  text-decoration: underline;
+	color: black;
+    display: block;
+`;
+
+
+const Input = styled.input`
+	padding: 0.5em;
+	color: black;
+	background: white;
+	border: none;
+	border-radius: 3px;
+	width: 50%;
+	margin-bottom: 0.5em;
+`;
+
+const Button = styled.button`
+  cursor: pointer;
+  background-color: green;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 2px;
+`;
+
 
 export default SignUpForm;

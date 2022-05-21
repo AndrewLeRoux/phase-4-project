@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Error from "./Error";
+import styled from "styled-components";
+
 
 function LoginForm ({onLogin}) {
     const [username, setUsername] = useState("");
@@ -26,9 +28,9 @@ function LoginForm ({onLogin}) {
 
 
     return (
-      <>
+      <Wrapper>
         <form onSubmit={handleSubmit}>
-            <input
+            <Input
             type="text"
             name = "username"
             placeholder= "username..."
@@ -36,20 +38,64 @@ function LoginForm ({onLogin}) {
             value={username}
         />
         <br/>
-        <input
-            type="text"
+        <Input
+            type="password"
             name = "password"
             placeholder= "password..."
             onChange={(e) => setPassword(e.target.value)}
             value={password}
         />
         <br/>
-        <button type="submit">Login</button>
+        <Button type="submit">Login</Button>
         </form>
         {errors.map(error => {return <Error key = {error}>{error}</Error>})}
-        </>
+        </Wrapper>
     )
 }
+
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: #61fb78;
+  margin-left: 30px;
+  margin-right: 30px;
+  color: black;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-style: solid outset;
+  border-color: green;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 40px;
+`;
+
+
+const Label = styled.label`
+	margin-bottom: 0.5em;
+  text-decoration: underline;
+	color: black;
+    display: block;
+`;
+
+
+const Input = styled.input`
+	padding: 0.5em;
+	color: black;
+	background: white;
+	border: none;
+	border-radius: 3px;
+	width: 50%;
+	margin-bottom: 0.5em;
+`;
+
+const Button = styled.button`
+  cursor: pointer;
+  background-color: green;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 2px;
+`;
 
 
 export default LoginForm;

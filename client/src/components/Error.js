@@ -3,7 +3,6 @@ import styled from "styled-components";
 function Error({ children }) {
     return (
         <Wrapper>
-        <Alert>!</Alert>
         <Message>{children}</Message>
       </Wrapper>
     );
@@ -16,18 +15,10 @@ function Error({ children }) {
   display: flex;
   padding: 8px;
   align-items: center;
-  gap: 8px;
   margin: 8px 0;
-`;
-
-const Alert = styled.span`
-  background-color: white;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  font-weight: bold;
-  display: grid;
-  place-content: center;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
 `;
 
 const Message = styled.p`
