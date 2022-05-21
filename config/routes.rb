@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :favorites
+  resources :favorites, only: [:index, :show, :create, :update, :destroy]
   resources :posts
-  resources :tags
-  resources :users
+  resources :tags, only: [:index]
+  resources :users, only: [:show, :create]
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   skip_before_action :authorize, only: :create
 
-  # GET /users
-  def index
-    @users = User.all
+  # # GET /users
+  # def index
+  #   @users = User.all
 
-    render json: @users
-  end
+  #   render json: @users
+  # end
 
   # GET /users/1
   def show
@@ -20,17 +20,17 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
-  # PATCH/PUT /users/1
-  def update
-    @current_user.update!(user_params)
-    render json: @current_user
+  # # PATCH/PUT /users/1
+  # def update
+  #   @current_user.update!(user_params)
+  #   render json: @current_user
     
-  end
+  # end
 
-  # DELETE /users/1
-  def destroy
-    @current_user.destroy
-  end
+  # # DELETE /users/1
+  # def destroy
+  #   @current_user.destroy
+  # end
 
   private
     
