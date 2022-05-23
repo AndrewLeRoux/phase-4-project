@@ -4,6 +4,8 @@
 
 *This is a website where users can post items and services for sale*
 
+ Visit [AndysList](https://andyslist.herokuapp.com/) to see the deployed application.
+
 
 ## Functionality
 
