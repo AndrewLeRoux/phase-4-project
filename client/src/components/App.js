@@ -63,13 +63,13 @@ function App() {
     setFavorites(updatedFavorites)
   }
 
-  function handleFavoriteDelete(deletedFavorite) {
-    const newFavorites = favorites.filter(favorite => !(favorite.id === deletedFavorite.id))
+  function handleFavoriteDelete(favoriteId) {
+    const newFavorites = favorites.filter(favorite => !(favorite.id === favoriteId))
     setFavorites(newFavorites)
   }
 
-  function handlePostDelete(deletedPost) {
-    const newPosts = posts.filter(post => !(post.id === deletedPost.id))
+  function handlePostDelete(postId) {
+    const newPosts = posts.filter(post => !(post.id === postId))
     setPosts(newPosts)
   }
 
@@ -97,7 +97,6 @@ function App() {
 
 
   if (!user) return <Login onLogin={setUser} />;
-
   return (
     <div>
       <Title>AndysList</Title>

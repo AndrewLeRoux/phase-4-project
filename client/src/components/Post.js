@@ -28,7 +28,6 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
                 body: JSON.stringify({
                     post_id: post.id,
                     user_id: user.id
-                    
                 }),
             })
             .then((r) => r.json())
@@ -41,8 +40,7 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
         fetch(`/posts/${post.id}`, {
             method: "DELETE",
         })
-        .then((r) => r.json())
-        .then((deletedPost) => onPostDelete(deletedPost));
+        .then(() => onPostDelete(post.id));
     }
 
     function updatePost() {

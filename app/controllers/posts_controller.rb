@@ -15,35 +15,31 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-
-    @post = Post.create!(post_params)
+    @post = @current_user.posts.create!(post_params)
     render json: @post, status: :created, location: @post, include: ['tag', 'user']
 
   end
 
   # PATCH/PUT /posts/1
   def update
-
-    @post.update!(post_params)
+    @post = @current_user.posts.update!(post_params)
     render json: @post, include: ['tag', 'user']
 
   end
 
   # DELETE /posts/1
   def destroy
-    temp_post = @post
     @post.destroy
-    render json: temp_post, include: ['tag', 'user']
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = @current_user.posts.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:name, :image_url, :description, :user_id, :tag_id)
+      params.require(:post).permit(:name, :image_url, :description, :tag_id)
     end
 end

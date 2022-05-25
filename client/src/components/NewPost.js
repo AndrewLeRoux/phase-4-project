@@ -31,7 +31,6 @@ function NewPost({user, tags, onAddPost}) {
           name: name,
           image_url: image_url,
           description: description,
-          user_id: user.id,
           tag_id: tag_id
         }),
         })

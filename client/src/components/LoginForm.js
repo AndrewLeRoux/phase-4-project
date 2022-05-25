@@ -71,14 +71,6 @@ const Wrapper = styled.section`
 `;
 
 
-const Label = styled.label`
-	margin-bottom: 0.5em;
-  text-decoration: underline;
-	color: black;
-    display: block;
-`;
-
-
 const Input = styled.input`
 	padding: 0.5em;
 	color: black;

@@ -9,8 +9,7 @@ function Favorite({favorite, tags, onFavoriteDelete}) {
         fetch(`/favorites/${favorite.id}`, {
             method: "DELETE",
         })
-        .then((r) => r.json())
-        .then((deletedFavorite) => onFavoriteDelete(deletedFavorite));
+        .then(() => onFavoriteDelete(favorite.id));
         
     }
 
