@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}) {
 
+    const postId = post.id
+
     let history = useHistory();
 
     let myPost = false
@@ -26,8 +28,7 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    post_id: post.id,
-                    user_id: user.id
+                    post_id: post.id
                 }),
             })
             .then((r) => r.json())
@@ -40,7 +41,7 @@ function Post({post, user, favorites, onAddFavorite, onPostDelete, onPostUpdate}
         fetch(`/posts/${post.id}`, {
             method: "DELETE",
         })
-        .then(() => onPostDelete(post.id));
+        .then(() => onPostDelete(postId));
     }
 
     function updatePost() {

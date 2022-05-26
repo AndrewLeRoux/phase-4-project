@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
-    @post = @current_user.posts.update!(post_params)
+    @post.update!(post_params)
     render json: @post, include: ['tag', 'user']
 
   end

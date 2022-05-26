@@ -15,15 +15,15 @@ class FavoritesController < ApplicationController
 
   # POST /favorites
   def create
-    # @favorite = @current_user.favorites.create!(post_params)
-    # render json: @favorite, status: :created, location: @favorite, include: [ 'post', 'post.tag', 'post.user']
+    @favorite = @current_user.favorites.create!(favorite_params)
+    render json: @favorite, status: :created, location: @favorite, include: [ 'post', 'post.tag', 'post.user']
     
-    @favorite = Favorite.new(favorite_params)
-    if @favorite.save
-      render json: @favorite, status: :created, location: @favorite, include: [ 'post', 'post.tag', 'post.user']
-    else
-      render json: @favorite.errors, status: :unprocessable_entity
-    end
+    # @favorite = Favorite.new(favorite_params)
+    # if @favorite.save
+    #   render json: @favorite, status: :created, location: @favorite, include: [ 'post', 'post.tag', 'post.user']
+    # else
+    #   render json: @favorite.errors, status: :unprocessable_entity
+    # end
   end
 
   # # PATCH/PUT /favorites/1
@@ -48,6 +48,6 @@ class FavoritesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def favorite_params
-      params.require(:favorite).permit(:post_id, :user_id)
+      params.require(:favorite).permit(:post_id)
     end
 end
