@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :tag
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
 
   validates :name, presence: true
